@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "semantic-release plugin to bump pubspec.yaml version with version code support",
   "main": "dist/index.js",
+  "type": "module",
   "files": [
     "dist/**/*.js",
     "README.md"
