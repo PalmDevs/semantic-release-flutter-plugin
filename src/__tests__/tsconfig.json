@@ -1,0 +1,25 @@
+{
+    "extends": "@tsconfig/strictest",
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "outDir": "./dist",
+        "removeComments": true,
+        "importsNotUsedAsValues": "remove",
+        "newLine": "lf",
+        "stripInternal": true,
+        "noEmitHelpers": false,
+        "noEmitOnError": true,
+        "preserveConstEnums": true,
+
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "preserveSymlinks": false,
+        "forceConsistentCasingInFileNames": true,
+
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": true
+    },
+    "include": ["./**/*"]
+}
