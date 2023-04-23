@@ -43,7 +43,7 @@ function calculateVersionCode(
         majorWeight / minorWeight,
         minorWeight / patchWeight,
         patchWeight / channelWeight,
-        channelWeight / preReleaseWeight,
+        (channelWeight ?? patchWeight) / preReleaseWeight,
     ];
 
     if (minor >= minorLimit || minor < 0)
