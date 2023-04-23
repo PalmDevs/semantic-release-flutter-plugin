@@ -1,0 +1,20 @@
+# Everything
+*
+
+# But not the important files
+!.github/workflows/*.yml
+!*.js
+!*.ts
+!*.tsx
+!*.css
+!*.html
+
+# Some more JSONs
+!.prettierrc
+!tsconfig.json
+
+# Don't forget to check subdirectories as well
+!*/
+
+# But ignore the dist folder
+dist/**/*
