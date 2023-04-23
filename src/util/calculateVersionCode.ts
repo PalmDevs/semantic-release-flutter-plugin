@@ -64,10 +64,10 @@ function calculateVersionCode(
                 channelLimit - 1
             } (patchWeight / channelWeight - 1)`
         );
-    // @ts-expect-error parseInt(...) returns a number even when ... is a string
+
     if (
-        (channel && build && parseInt(build) >= preReleaseLimit) ||
-        parseInt(build) < 0
+        (channel && build && Number(build) >= preReleaseLimit) ||
+        Number(build) < 0
     )
         throw new Error(
             `The pre-release build number (${build}) is too large, the limit of it is ${
@@ -80,8 +80,7 @@ function calculateVersionCode(
     versionCode += minor * minorWeight;
     versionCode += patch * patchWeight;
     versionCode += isPreRelease ? channelIndex * channelWeight : 0;
-    // @ts-expect-error parseInt(...) returns a number even when ... is a string
-    if (channel && build) versionCode += parseInt(build) * preReleaseWeight;
+    if (channel && build) versionCode += Number(build) * preReleaseWeight;
 
     return versionCode;
 }
