@@ -32,19 +32,21 @@
     "@saithodev/semantic-release-backmerge": "^3.1.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@tsconfig/strictest": "^2.0.0",
+    "@tsconfig/strictest": "^2.0.1",
     "@types/semantic-release": "^20.0.1",
+    "@types/semver": "^7.3.13",
     "@vercel/ncc": "^0.36.1",
     "expect": "^29.5.0",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.0",
-    "prettier": "^2.8.7",
+    "lint-staged": "^13.2.1",
+    "prettier": "^2.8.8",
     "tsm": "^2.3.0",
-    "typescript": "^5.0.3",
+    "typescript": "^5.0.4",
     "uvu": "^0.5.6"
   },
   "dependencies": {
     "semantic-release": "^21.0.1",
-    "semver": "^7.5.0"
+    "semver": "^7.5.0",
+    "yaml": "^2.2.1"
   }
 }
