@@ -1,6 +1,6 @@
 {
   "name": "semantic-release-flutter-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "semantic-release plugin to bump pubspec.yaml version with version code support",
   "main": "dist/index.js",
   "type": "module",
