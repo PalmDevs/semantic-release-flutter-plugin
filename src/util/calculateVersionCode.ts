@@ -51,29 +51,25 @@ function calculateVersionCode(
         throw new Error(
             `The minor version (${minor}) is too large, the limit of it is ${
                 minorLimit - 1
-            }`
+            } per a major version`
         );
     if (patch >= patchLimit)
         throw new Error(
             `The patch version (${patch}) is too large, the limit of it is ${
                 patchLimit - 1
-            }`
+            } per a minor version`
         );
     if (channelIndex >= channelLimit)
         throw new Error(
-            `There are too many release channels, the limit of it is ${
-                channelLimit - 1
-            }`
+            `There are too many release channels, the limit of it is ${channelLimit} release channels`
         );
 
     if (
-        (channel && build && Number(build) >= preReleaseLimit) ||
+        (channel && build && Number(build) > preReleaseLimit) ||
         Number(build) < 0
     )
         throw new Error(
-            `The pre-release build number (${build}) is too large, the limit of it is ${
-                preReleaseLimit - 1
-            }`
+            `The pre-release build number (${build}) is too large, the limit of it is ${preReleaseLimit} prereleases per a version`
         );
 
     let versionCode = 0;
@@ -81,7 +77,8 @@ function calculateVersionCode(
     versionCode += minor * minorWeight;
     versionCode += patch * patchWeight;
     versionCode += isPreRelease ? channelIndex * channelWeight : 0;
-    if (channel && build) versionCode += Number(build) * preReleaseWeight;
+    if (channel && build)
+        versionCode += Math.max(Number(build) - 1, 0) * preReleaseWeight;
 
     return versionCode;
 }
