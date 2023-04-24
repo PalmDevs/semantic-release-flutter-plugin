@@ -19,10 +19,12 @@ export default function verifyConditions(
             if (
                 key.endsWith('Weight') &&
                 !(
-                    typeof pluginConfig === 'undefined' ||
+                    typeof pluginConfig[key] === 'undefined' ||
                     (typeof pluginConfig[key] === 'number' &&
+                        key !== 'channelWeight' &&
                         // @ts-expect-error Shut up
-                        pluginConfig[key] >= 0)
+                        pluginConfig[key]! > 0) ||
+                    (key === 'channelWeight' && pluginConfig[key]! > -1)
                 )
             )
                 weightErrors.push(
@@ -36,19 +38,19 @@ export default function verifyConditions(
     if (pluginConfig.minorWeight! >= pluginConfig.majorWeight!)
         weightErrors.push(
             new Error(
-                `Option minorWeight must be lower than majorWeight (${pluginConfig.majorWeight})`
+                `Option minorWeight (${pluginConfig.minorWeight}) must be lower than majorWeight (${pluginConfig.majorWeight})`
             )
         );
     if (pluginConfig.patchWeight! >= pluginConfig.minorWeight!)
         weightErrors.push(
             new Error(
-                `Option patchWeight must be lower than minorWeight (${pluginConfig.minorWeight})`
+                `Option patchWeight (${pluginConfig.patchWeight}) must be lower than minorWeight (${pluginConfig.minorWeight})`
             )
         );
     if (pluginConfig.channelWeight! >= pluginConfig.patchWeight!)
         weightErrors.push(
             new Error(
-                `Option channelWeight must be lower than patchWeight (${pluginConfig.patchWeight})`
+                `Option channelWeight (${pluginConfig.channelWeight}) must be lower than patchWeight (${pluginConfig.patchWeight})`
             )
         );
     if (
@@ -57,7 +59,9 @@ export default function verifyConditions(
     )
         weightErrors.push(
             new Error(
-                `Option preReleaseWeight must be lower than ${
+                `Option preReleaseWeight (${
+                    pluginConfig.preReleaseWeight
+                }) must be lower than ${
                     pluginConfig.channelWeight
                         ? `channelWeight (${pluginConfig.channelWeight})`
                         : `patchWeight (${pluginConfig.patchWeight})`
