@@ -21,7 +21,7 @@ const prepare = function prepare(
 
     const pubspec = parseYaml(fs.readFileSync(resolvedFile, 'utf8'));
 
-    logger.debug('Pubspec file as JSON:\n%s', pubspec);
+    logger.debug('Pubspec file as JSON: %s', pubspec);
 
     const versionField = pubspec.version;
     if (!versionField)
@@ -42,13 +42,18 @@ const prepare = function prepare(
         options?.branches ?? []
     );
 
+    const versionString = `${context.nextRelease!.version}+${versionCode}`;
+
+    logger.log('Calculated version code: %s', versionCode);
+    logger.log('Version is: %s', versionString);
+
     const newFileContents = stringifyYaml({
         ...pubspec,
-        version: `${context.nextRelease!.version}+${versionCode}`,
+        version: versionString,
     });
 
     logger.debug('New file contents:\n%s', newFileContents);
-    logger.debug('Writing to file %s', resolvedFile);
+    logger.log('Writing to file %s', resolvedFile);
 
     fs.writeFileSync(resolvedFile, newFileContents, 'utf8');
 };
