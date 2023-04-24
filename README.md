@@ -26,7 +26,7 @@ $ npm install semantic-release-flutter-plugin -D
 | `preReleaseWeight`       | The weight of a prerelease number     | `1`                                                                                                                         |
 
 #### Deciding weights
-[The highest version code Play Store allows is `2100000000` (2 billion, 100 million)](https://developer.android.com/studio/publish/versioning#versioningsettings). Which means you'll need to configure the values carefully. If you don't want to publish your app to Play Store, the limit can be ignored.  
+[The highest version code Play Store allows is `2100000000` (2 billion, 100 million)](https://developer.android.com/studio/publish/versioning#versioningsettings). Which means you'll need to configure the values carefully. This is also very close to the integer limit for 32-bit devices. If you don't want to publish your app to Play Store or support 32-bit devices, the limit can be safely ignored.  
 
 The default configuration allows for:
 - 21 major versions
@@ -35,12 +35,12 @@ The default configuration allows for:
 - 10 release channels
 - 100 prerelease builds (in a single version)
 
-The limits are calculated by doing `upperWeight / currentWeight`, eg. if you want to calculate a minor version limit, you can do `majorWeight / minorWeight`.
+The limits are calculated by doing `upperWeight / currentWeight`, eg. if you want to calculate a minor version limit, you can do `majorWeight / minorWeight`. If `upperWeight` is `0`, look for the upper weight of `upperWeight`, eg. if you set `channelWeight` to `0`, the formula for prerelease number limit is `patchWeight / preReleaseWeight`.
 
 ### Examples
 > **Warning**: The order in the `branches` property matters! The plugin will generate a higher version code depending on where you place your branch configuration on the array.  
 > 
-> When the plugin notices a prerelease version (eg. `v1.1.0-alpha.1`), it will get the index of where the prerelease branch configuration is (in this case, `alpha`). In the below example, the index that it gets is `2`, then it multiplies that number by the supplied `preReleaseExponent * versionCodeBase` and adds it to the version code number.  
+> When the plugin notices a prerelease version (eg. `v1.1.0-alpha.1`), it will get the index of where the prerelease branch configuration is (in this case, `alpha`). In the below example, the index that it gets is `2`, then it multiplies that number by the supplied the `channelWeight` option (`2 * channelWeight`) and adds it to the version code number.  
 >
 > This would mean that users from the `alpha` channel wouldn't be able to downgrade to `beta` *(index `1`)* or the `main` *(index `0`)* channel, as the index for those configuration is lower than the `alpha`'s index.  
 > 
