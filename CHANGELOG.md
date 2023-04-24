@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/PalmDevs/semantic-release-flutter-plugin/compare/v1.1.1...v1.1.2) (2023-04-24)
+
+
+### Bug Fixes
+
+* **util/calculateVersionCode:** build number limit being one less than normal ([f92fef0](https://github.com/PalmDevs/semantic-release-flutter-plugin/commit/f92fef0dae15848a942d3b13e0700fde88588245))
+
 ## [1.1.1](https://github.com/PalmDevs/semantic-release-flutter-plugin/compare/v1.1.0...v1.1.1) (2023-04-24)
 
 
