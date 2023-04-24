@@ -1,3 +1,16 @@
+# [1.1.0](https://github.com/PalmDevs/semantic-release-flutter-plugin/compare/v1.0.1...v1.1.0) (2023-04-24)
+
+
+### Bug Fixes
+
+* **util/calculateVersionCode:** issues with limits when channelWeight is set to 0 ([818bad0](https://github.com/PalmDevs/semantic-release-flutter-plugin/commit/818bad008f0dc8b2d0c1ea1722d14dafccabf5c2))
+
+
+### Features
+
+* **lifecycles/prepare:** add more log messages ([c8fc743](https://github.com/PalmDevs/semantic-release-flutter-plugin/commit/c8fc743fe4a7875b268c18be9c1c6f2dc9a8e08b))
+* **lifecycles/verifyConditions:** add more validators ([cb79521](https://github.com/PalmDevs/semantic-release-flutter-plugin/commit/cb79521a8fc6a40d3c3c5f5f5c4e03bbc8d6a63c))
+
 ## [1.0.1](https://github.com/PalmDevs/semantic-release-flutter-plugin/compare/v1.0.0...v1.0.1) (2023-04-23)
 
 
