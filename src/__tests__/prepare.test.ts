@@ -4,6 +4,8 @@ import { expect } from 'expect';
 import lifecycles from '../';
 import type { Context } from 'semantic-release';
 
+// TODO: test with limits
+
 const context = {
     options: {
         branches: [
@@ -87,13 +89,13 @@ test(`should update pubspec's version field`, () => {
 test(`should update pubspec's version field (prerelease)`, () => {
     const content = runPrepareWithContext(contextWithDevPreRelease);
     rmSync('src/__tests__/pubspec-testing.yaml');
-    expect(content).toContain('version: 2.1.3-dev.1+200103101');
+    expect(content).toContain('version: 2.1.3-dev.1+200103100');
 });
 
 test(`should update pubspec's version field (named channel)`, () => {
     const content = runPrepareWithContext(contextWithStagingPreRelease);
     rmSync('src/__tests__/pubspec-testing.yaml');
-    expect(content).toContain('version: 2.1.3-beta.2+200103202');
+    expect(content).toContain('version: 2.1.3-beta.2+200103201');
 });
 
 test('custom weights should work', () => {
@@ -117,8 +119,8 @@ test('custom weights should work', () => {
 
     const content = readFileSync('src/__tests__/pubspec-testing.yaml', 'utf8');
     rmSync('src/__tests__/pubspec-testing.yaml');
-    // 2 * 200000000 + 1 * 600000 + 3 * 1500 + 2 * 100 + 2 * 2 = 400604704
-    expect(content).toContain('version: 2.1.3-beta.2+400604704');
+    // (2 * 200000000) + (1 * 600000) + (3 * 1500) + (2 * 100) + ((2 - 1) * 2) = 400604702
+    expect(content).toContain('version: 2.1.3-beta.2+400604702');
 });
 
 test.run();
