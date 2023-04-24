@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/PalmDevs/semantic-release-flutter-plugin/compare/v1.1.0...v1.1.1) (2023-04-24)
+
+
+### Bug Fixes
+
+* **lifecycles/verifyConditions:** validation issues for channelWeight ([a5214e8](https://github.com/PalmDevs/semantic-release-flutter-plugin/commit/a5214e8551b6232fe3c9b18bf61d5d8bd5b0d84a))
+
 # [1.1.0](https://github.com/PalmDevs/semantic-release-flutter-plugin/compare/v1.0.1...v1.1.0) (2023-04-24)
 
 
