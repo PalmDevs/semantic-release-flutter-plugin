@@ -66,6 +66,9 @@ The weight properties in the configuration is responsible for all the computing.
 > 
 > If you want to disable this feature, set `channelWeight` to `0`. This will also increase room for more version codes.
 
+You must have 2 configuration files. One for bumping which will be run before building and one for making releases and uploading assets. You'll also need to run semantic-release twice.
+
+`bump.releaserc` (before building)
 ```json
 {
   "branches": [
